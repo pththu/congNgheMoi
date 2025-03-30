@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+  <div class="content">
+    <form id="create" method="POST" action="/" enctype="multipart/form-data">
+      <input class="input_text" type="number" name="ma_sp" placeholder="ID sản phẩm" />
+      <input class="input_text" type="text" name="ten_sp" placeholder="Tên sản phẩm" />
+      <input class="input_text" type="number" name="so_luong" placeholder="Số lượng sản phẩm" />
+      <input class="input_text" type="file" name="image" />
+      <input class="button_submit" type="submit" value="Submit" />
+    </form>
+    <form id="delete" method="POST" action="/delete" enctype="multipart/form-data">
+      <div class="title">
+        <h2>Danh sach san pham</h2>
+        <input class="btn-delete" type="submit" value="Xoa" />
+      </div>
+      <table border="1">
+        <tr>
+          <th>Ma SP</th>
+          <th>Ten SP</th>
+          <th>So Luong</th>
+          <th>Chon</th>
+        </tr>
+        <% for (let i=0; i < sanPhams.length; i++) { %>
+          <tr>
+            <td>
+              <%= sanPhams[i].ma_sp %>
+            </td>
+            <td>
+              <%= sanPhams[i].ten_sp %>
+            </td>
+            <td>
+              <%= sanPhams[i].so_luong %>
+            </td>
+            <td>
+              <img width="50px" src= "<%=sanPhams[i].image_url%>"" alt="Ảnh" />
+            </td>
+            <td>
+              <input type="checkbox" name="ids" value="<%= sanPhams[i].ma_sp %>" />
+            </td>
+          </tr>
+          <% } %>
+      </table>
+    </form>
+  </div>
+</body>
+
+</html>
